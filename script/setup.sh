@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Preparing a new Mac for development
-# Script Created by Nathan Kennedy nathankennedy1@gmail.com
+# Script Created by DissidentCode github.carry327@passinbox.com
 
 echo "Starting Development Environment Setup..."
 failure_log=""
@@ -121,16 +121,16 @@ if [ -f ~/.zshrc ]; then
 fi
 
 # Overwrite the existing .zshrc file with the new configuration
-curl -o ~/.zshrc https://raw.githubusercontent.com/nathan-kennedy/dot-files/master/.zshrc || failure_log+=".zshrc configuration download failed\n"
+curl -o ~/.zshrc https://raw.githubusercontent.com/dissidentcode/dot-files/master/.zshrc || failure_log+=".zshrc configuration download failed\n"
 echo ".zshrc configuration applied."
 
 # Install Raycast
-# **Raycast**: This is a productivity tool that lets you control and automate tasks directly from your macOS toolbar with amazing keyboard shortcut support.
+# **Raycast**: This productivity tool lets you control and automate tasks directly from your macOS toolbar with amazing keyboard shortcut support.
 if ! is_cask_installed raycast; then
 	brew install --cask raycast || failure_log+="Raycast installation failed\n"
 fi
 
-# Install Visual Studio Code (Vim and Emacs users avert your eyes - or delete me)
+# Install Visual Studio Code (Vim, Emacs, and Notepad users, avert your eyes - or delete me!)
 # **Visual Studio Code**: An open-source code editor developed by Microsoft.
 if ! is_cask_installed visual-studio-code; then
 	brew install --cask visual-studio-code || failure_log+="Visual Studio Code installation failed\n"
@@ -152,7 +152,7 @@ fi
 echo "Please ensure you are logged into the App Store. Press Enter when ready."
 read -p ""
 
-# *Install software from the App Store with app id search in case you want to add applications to the 'apps' list/array*
+# *Install software from the App Store with app ID search in case you want to add applications to the 'apps' list/array*
 
 # **Hidden Bar**: A Mac utility that helps to hide menu bar items to de-clutter the screen.
 # **DropOver**: A MacOS app to create a temporary shelf for drag and drop files.
@@ -176,38 +176,38 @@ done
 # **Ansible**: An open-source automation platform that enables infrastructure as code, task automation, application deployment, and encryption.
 # **Aria2**: A simple torrenting tool for the command line.
 # **Asciinema**: An open-source solution for recording terminal sessions and sharing them.
-# **Bat**: Adds syntax highlighting for a large number of languages, git integration, etc to 'cat' command.
+# **Bat**: Adds syntax highlighting for many languages, git integration, etc to 'cat' command.
 # **Btop**: An interactive system monitor designed as an alternative to the Unix program 'top' (btop is way better than htop).
-# **Colordiff**: A wrapper for 'diff' that produces the same output but with coloured syntax and vertical alignment.
+# **Colordiff**: A wrapper for 'diff' that produces the same output but with colored syntax and vertical alignment.
 # **Diff-so-fancy**: A series of scripts to make Git's diff output look fancier and easier to understand.
 # **Duf**: Disk Usage/Free Utility with a best-in-slot visual presentation.
-# **Dust**: An enhanced `du` written in rust for more intuitive and useful display of information.
+# **Dust**: An enhanced `du` written in rust for a more intuitive and useful information display.
 # **Eza**: A modern replacement for `ls`; better suited for displaying all directories, or all files.
-# **Fd**: A fast and user-friendly alternative to the classic 'find' command within the terminal.
-# **Ffmpeg**: FFmpeg is a versatile multimedia tool used for audio and video processing, including conversion, compression, and streaming. It supports a wide range of formats.
-# **Fio**: A versatile I/O benchmarking tool, ideal for testing and analyzing the performance of various storage devices. It provides insights into latency, throughput, and IOPS.
+# **Fd**: A fast and user-friendly alternative to the terminal's classic 'find' command.
+# **Ffmpeg**: FFmpeg is a versatile multimedia tool for audio and video processing, including conversion, compression, and streaming. It supports a wide range of formats.
+# **Fio**: A versatile I/O benchmarking tool ideal for testing and analyzing the performance of various storage devices. It provides insights into latency, throughput, and IOPS.
 # **Fzf**: A flexible and fast command-line fuzzy finder to enhance shell command efficiency.
 # **Gifsicle**: Gifsicle is a command-line tool for editing and optimizing GIF images, known for efficiently reducing file sizes while maintaining quality.
-# **Git**: An open-source version control system used to handle all kinds of projects, large and small.
-# **ImageMagick**: A software suite to create, edit and compose bitmap images in a variety of formats.
+# **Git**: An open-source version control system used to handle various projects, large and small.
+# **ImageMagick**: A software suite that creates, edits, and composes bitmap images in various formats.
 # **Jpegoptim**: A utility to optimize and compress JPEG files without losing quality.µ
 # **Jq**: A command-line tool for processing JSON data, allowing for filtering, transformation, and extraction of information.
-# **Lsd**: A modern replacement for `ls`; better suited for displaying all files and dirrectories, hidden or otherwise.
-# **Neofetch**: System profiler with ascii art.
+# **Lsd**: A modern replacement for `ls`; better suited for displaying all files and directories, hidden or otherwise.
+# **Neofetch**: System profiler with ASCII art.
 # **Neovim**: An extension of Vim that includes new features, simplified code, and a plugin architecture.
 # **Optipng**: A PNG optimizer that recompresses image files to a smaller size without losing any information.
-# **Pandoc**: A universal document converter, able to convert files from one markup format into another.
-# **Ranger**: A console file manager with VI key bindings, offering a minimalistic and powerful visual interface.
+# **Pandoc**: A universal document converter that is able to convert files from one markup format into another.
+# **Ranger**: A console file manager with VI key bindings offering a minimalistic and powerful visual interface.
 # **Rar**: A command line utility to create RAR archives.
 # **Speedtest-cli**: Command line interface for testing internet bandwidth using speedtest.net.
 # **Starship**: A powerful prompt crafting tool for your shell.
-# **Tealdeer**: A very fast implementation of 'tldr' client providing simplified, community-driven man pages.
-# **Trash**: A safer alternative to `rm`, allowing you to move files to the trash instead of immediate irreversible deletion.
+# **Tealdeer**: A speedy implementation of 'tldr' client providing simplified, community-driven man pages.
+# **Trash**: A safer alternative to `rm,` allowing you to move files to the trash instead of immediate, irreversible deletion.
 # **Tree**: A recursive directory listing command that produces a depth-indented listing of files.
 # **Unar**: A command-line utility for extracting archives, known for its support of multiple formats and its cross-platform compatibility.
 # **Webp**: A command-line tool to convert images to the WebP format, which provides superior lossless and lossy compression for web images.
-# **Wifi-password**: A script to quickly find the password of the WiFi you're connected to.
-# **Z**: A command line tool that allows you to navigate your filesystem super fast using 'frecency' (combination of frequency and recency).
+# **Wifi-password**: A script to quickly find the WiFi password you're connected to (this tool requires you to enter the network ID manually - I put together a small script that circumvents this, but it may trip up some of the new security features of Apple's latest OS release. If you're interested in how I did this, email me (github.carry327@passinbox.com), and I'll share the script. It's simple, you just need to know where to look and use some fancy RegEx to extract the network ID automatically ;))
+# **Z**: A command line tool that allows you to navigate your filesystem super fast using 'frecency' (a combination of frequency and recency).
 # **Zip**: A command-line utility for packaging and compressing (archiving) files in a zip format, widely used for file distribution.
 brew install ansible aria2 asciinema bat btop colordiff diff-so-fancy duf dust eza fd ffmpeg fio fzf gifsicle git imagemagick jpegoptim jq neofetch neovim optipng lsd pandoc ranger rar speedtest-cli starship tealdeer trash tree unar webp wifi-password z zip || failure_log+="Installation of one or more command-line tools failed\n"
 
@@ -217,11 +217,11 @@ brew install ansible aria2 asciinema bat btop colordiff diff-so-fancy duf dust e
 # **Python**: Python is a programming language that lets you work quickly and integrate systems effectively.
 brew install node python || failure_log+="Node or Python installation failed\n"
 
-# *Install gui applications via Homebrew Cask:*
+# *Install GUI applications via Homebrew Cask:*
 
-# Install 1Password (paid - yearly subscription - $36 as of 2023 - worth the money, especially if you want to store sensitive data other than just passwords.)
-# **1Password**: A password manager that provides a place for users to store various passwords, software licenses, and other sensitive information in a virtual vault locked with a PBKDF2-guarded master password. This is the best-in-slot password manager imo.
-brew install --cask 1password || failure_log+="1Password installation failed\n"
+# Install 1Password (paid yearly subscription—$36 as of 2023—worth the money, especially if you want to store sensitive data other than passwords) DEPRICATED - I'VE RECENTLY SWITCHED TO PROTON PASS - THEIR MAIL, PASSWORD MANAGER, AND VPN COMBO ARE A DEVENT VALUE.
+# **1Password**: This password manager allows users to store various passwords, software licenses, and other sensitive information in a virtual vault locked with a PBKDF2-guarded master password. It is, in my opinion, the best-in-slot password manager.
+# brew install --cask 1password || failure_log+="1Password installation failed\n"
 
 # Install AlDente (paid features, but free version is great)
 # **AlDente**: AlDente is a menu bar tool for MacOS that allows you to control your MacBook's battery charging threshold and helps extend battery life.
@@ -264,8 +264,8 @@ fi
 
 # You may be prompted to input your password more than once.
 
-# Error handling will log errors and list errors at the end of the script but the script will continue to run even if an error occurs.
+# Error handling logs and lists errors at the end of the script, but the script will continue to run even if an error occurs.
 
-# Feel free to remove or add packages and software to suit your needs. Keep in mind the top-to-bottom order of commands. If you want a cask package, Homebrew needs to be installed first. Also anything being installed from the App store needs to execute after 'mas' installation on line 44.
+# Feel free to remove or add packages and software to suit your needs. Keep in mind the top-to-bottom order of commands. If you want a cask package, Homebrew needs to be installed first. Also, anything installed from the App store needs to execute after the 'mas' installation on line 44.
 
-# Make sure you've logged into the App Store before running this script since 'mas' requires you to be logged in. If you're adding software to the script from the App store be sure to use the appropriate id number (App names do not work with mas).
+# Ensure you've logged into the App Store before running this script since 'mas' requires you to be logged in. If you're adding software to the script from the App Store, be sure to use the appropriate ID number (App names do not work with mas).
