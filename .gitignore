@@ -17,3 +17,6 @@
 
 # Others
 *.gz
+
+# Claude Code session-local state (machine-specific, not for sharing)
+.claude/session-history/
