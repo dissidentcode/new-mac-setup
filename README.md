@@ -35,6 +35,8 @@ cd new-mac-setup
 ./setup.sh
 ```
 
+That's it. You don't need to clone anything else first. The script handles fetching your dotfiles, installing every tool in the Brewfile, configuring your shell, and setting up the Starship prompt — all automatically. The only thing you provide is the occasional password and an Apple ID for the App Store.
+
 The script will narrate what it's doing and pause before anything that needs your attention (like signing into the Mac App Store). Plan for **20–45 minutes** depending on your internet speed.
 
 **Want to see what it'll do without actually doing it?** Run `./setup.sh --dry-run`. It will print every action it would take and then exit. No files changed, nothing installed.
@@ -235,11 +237,55 @@ The full, current list lives in [`docs/tool-recommendations-2026-04.md`](./docs/
 
 ## After it finishes
 
-Three small things to do:
+Four small things to do:
 
-1. **Restart your terminal** (close all windows, open a new one) or run `exec zsh` in the existing window. This loads the new shell config.
-2. **Open WezTerm** and confirm it's using the Monaspace font. (WezTerm → Preferences, or edit `~/.wezterm.lua` if you're comfortable with that.)
-3. **Try the AI CLIs.** Run `claude`, `gemini`, or `codex` in a terminal. Each will walk you through first-time login.
+### 1. Restart your terminal
+
+Close all terminal windows and open a new one (or run `exec zsh` in the existing window). This loads the new shell, prompt, and history search.
+
+### 2. Configure WezTerm's font
+
+This is the only manual config step, and it's what makes your prompt look right. WezTerm's config lives at `~/.config/wezterm/wezterm.lua`. If the file doesn't exist yet, create it with the following content:
+
+```lua
+local wezterm = require 'wezterm'
+local config = wezterm.config_builder()
+
+-- Primary font: Monaspace (clean, modern coding font)
+-- Fallback: Hack Nerd Font (provides the prompt icons that Monaspace doesn't have)
+config.font = wezterm.font_with_fallback({
+  'Monaspace Neon',
+  'Hack Nerd Font',
+})
+config.font_size = 14.0
+
+-- Optional: a darker theme that pairs well with the Starship prompt
+config.color_scheme = 'Catppuccin Mocha'
+
+return config
+```
+
+A quick word on the two fonts:
+
+- **Monaspace Neon** is one of five Monaspace styles (Neon, Argon, Krypton, Radon, Xenon). They all share metrics so you can swap freely. Neon is a clean neo-grotesque; try the others if you want something more serif-like (Xenon) or more humanist (Argon).
+- **Hack Nerd Font** sits underneath as a fallback so any glyph Monaspace doesn't have — the icons in your prompt for git, language versions, battery, folders — falls through and renders correctly.
+
+After saving the file, **restart WezTerm** for the font change to take effect.
+
+### 3. Verify your prompt looks right
+
+Open a fresh WezTerm window. You should see a colorful Starship prompt showing:
+
+- The current directory, with an icon
+- A git branch and status (when you're inside a repository)
+- Language version icons (when you're in a project that uses them)
+- A battery indicator and clock on the right side
+
+If you see boxes (`☐`) or question marks where icons should be, the Hack Nerd Font fallback isn't being applied — double-check the `wezterm.lua` above and that Hack Nerd Font is actually installed (`brew list --cask | grep nerd`).
+
+### 4. Try the AI CLIs
+
+Run `claude`, `gemini`, or `codex` from a terminal. Each one walks you through first-time authentication. You only need to do this for the AI tools you actually plan to use — there's no harm in skipping the others.
 
 If anything looks off, the [Troubleshooting](#troubleshooting) section covers the common cases.
 
