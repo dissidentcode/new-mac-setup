@@ -18,7 +18,8 @@ readonly DOTFILES_DIR="$HOME/.dotfiles"
 readonly ZSH_CUSTOM="$HOME/.zsh"
 readonly LOG_FILE="$HOME/mac-setup.log"
 readonly STATE_FILE="$HOME/.mac-setup-state"
-readonly HOMEBREW_PREFIX="/opt/homebrew"
+# Not readonly: `eval "$(brew shellenv)"` re-exports HOMEBREW_PREFIX; readonly would error.
+HOMEBREW_PREFIX="/opt/homebrew"
 readonly BREW_ZSH="$HOMEBREW_PREFIX/bin/zsh"
 
 # NPM globals to install. Edit this list to add/remove.
@@ -249,6 +250,10 @@ install_packages() {
         log_error "brew bundle failed — some packages may not have installed; check output above"
         return 1
     fi
+    # Flush bash's command-path cache. Earlier steps may have hashed `git` to /usr/bin/git;
+    # `mas` can install Xcode.app here, which makes /usr/bin/git invoke xcrun and trip the
+    # Xcode license prompt on later git clones. Brew's git at /opt/homebrew/bin/git is fine.
+    hash -r
     log_success "Brewfile installation complete"
     mark_done "install_packages"
 }

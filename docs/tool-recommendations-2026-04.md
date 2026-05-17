@@ -139,7 +139,7 @@ These weren't asked about. If any look obviously unused, flag them later:
 - `brew "wifi-password"` — default keep.
 - `brew "w3m"` (text browser) — default keep.
 - `brew "aria2"` (downloader) — default keep.
-- `brew "icu4c@75"` — version pin worth questioning, default keep for now.
+- 🔴 **Drop `brew "icu4c@75"`** — Homebrew **disabled** this versioned formula on 2025-10-24. `brew bundle` errors with `icu4c@75 has been disabled because it is a versioned formula!` and aborts the bundle on a fresh machine. Confirmed by smoke-test on 2026-04-27. `imagemagick` and other consumers track unversioned `icu4c` now; nothing in the Brewfile depends on the @75 pin.
 
 ---
 
@@ -174,6 +174,7 @@ Apply the following changes to `~/.dotfiles/Brewfile`. Lines grouped by section.
 - brew "colordiff"                 # superseded by git-delta (suggest)
 - brew "diff-so-fancy"             # replaced by git-delta
 - brew "docker"                    # replaced by OrbStack
+- brew "icu4c@75"                  # disabled by Homebrew 2025-10-24 (versioned formula); aborts brew bundle
 - brew "felixkratz/formulae/borders"
 - brew "felixkratz/formulae/sketchybar"
 - brew "jstkdng/programs/ueberzugpp"
@@ -264,7 +265,7 @@ Drop **all 22** `vscode "..."` lines (Cursor uses the same extensions; reinstall
 ### Summary counts
 
 - 5 taps removed, 1 tap added (or 0 if `brew "oven-sh/bun/bun"` auto-taps).
-- 19 brews removed, 10 brews added.
+- 20 brews removed, 10 brews added.
 - 5 casks removed, 6 casks added.
 - 3 mas entries removed.
 - 21 vscode entries removed.
